@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+ <h3>Welcome {{customerDetails.0.user | capfirst}}</h3>
+
+
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn ">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn {{active}}">Address</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-9 offset-sm-1">
+   <div class="row">
+   {% for customerDetail in customerDetails %}
+    <div class="col-sm-6">
+     <div class="card">
+      <div class="card-body">
+       <h3>Address {{forloop.counter}}</h3>
+       <p>Name: {{customerDetail.name}}</p>
+       <p>Address: {{customerDetail.locality}}</p>
+       <p>pincode: {{customerDetail.zipcode}}</p>
+       <p>State: {{customerDetail.state}}</p>
+      </div>
+     </div>
+    </div>
+   {% endfor %}
+    {% comment %} <div class="col-sm-6">
+     <div class="card">
+      <div class="card-body">
+       <h3>Address 1</h3>
+       <p>Name: {{customerDetails.0.name}}</p>
+       <p>Address: {{customerDetails.0.locality}}</p>
+       <p>pincode: {{customerDetails.0.zipcode}}</p>
+       <p>State: {{customerDetails.0.state}}</p>
+      </div>
+     </div>
+    </div> {% endcomment %}
+     {% comment %} {% if customerDetails.1.user %}
+     <div class="col-sm-6">
+     <div class="card">
+      <div class="card-body">
+       <h3>Address 2</h3>
+       <p>Name: {{customerDetails.1.name}}</p>
+       <p>Address: {{customerDetails.1.locality}}</p>
+       <p>pincode: {{customerDetails.1.zipcode}}</p>
+       <p>State: {{customerDetails.1.state}}</p>
+      </div>
+     </div>
+    </div> 
+    {% endif %}  {% endcomment %}
+   </div>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

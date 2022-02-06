@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Web page</title>
+  </head>
+  <body>
+    <div id="overlay">
+    </div>
+    <div id="originalDiv">
+    </div>
+  </body>
+  <style>
+    #overlay {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      z-index: -1;
+      position:absolute;
+      top:50px;
+      left:50px;
+    }
+    
+    #originalDiv {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      z-index: 1;
+      position:absolute;
+      top:0px;
+      left:0px;
+    }
+  </style>
+</html>

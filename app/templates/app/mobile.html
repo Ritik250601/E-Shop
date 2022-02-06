@@ -1,0 +1,68 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Mobile{% endblock title %}
+
+{% block css %}
+
+
+<style>
+
+@media only screen and (min-width: 280px) and (max-width: 772px){
+  .card-img-top{
+      max-height:8rem;
+      max-width:6rem;
+  }
+}
+</style>
+
+
+
+{% endblock css %}
+
+{% block main-content %}
+<div class="container my-2">
+<h3> select Top Brands on Mobile Phones</h3>
+<a href = {% url 'mobile'%} class="btn">
+ <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+  All Mobiles
+</button>
+</a>
+<a href = {% url 'mobiledata' 'samsung' %} class="btn">
+ <button type="button" class="btn-sm btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+  samsung
+</button>
+</a>
+
+<a href = {% url 'mobiledata' 'mi' %} class="btn"><button type="button" class="btn-sm btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
+  Mi
+</button>
+<a href = {% url 'mobiledata' 'redmi' %} class="btn"><button type="button" class="btn-sm btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+  Redmi
+</button>
+</a>
+<a href = {% url 'mobiledata' 'apple' %} class="btn"><button type="button" class="btn-sm btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
+ Apple
+</button>
+</a>
+
+<div class="row row-cols-1 row-cols-md-4 g-3">
+{% for mobile in mobiles %}
+<div class="col">
+<a href="{% url 'product-detail' mobile.id %}" class="btn">
+  <div class="card " >
+    <img src="{{mobile.product_image.url}}" class="card-img-top" alt="{{mobile.brand}} mobile" style="height:15rem" >
+    <div class="card-body">
+      <h5 class="card-title">{{mobile.title}}</h5>
+      <p class="card-text">discounted Price {{mobile.discounted_price}}₹</p>
+      <p class="card-text">M.r.p <strike>{{mobile.selling_price}}₹</strike></p>
+
+  </div>
+  </a>
+  </div>
+</div>
+{% endfor %}
+</div>
+
+
+
+{% endblock main-content %}
